@@ -19,10 +19,10 @@ for dataset in ${Datasets[@]}; do
         for shot in ${Shots[@]}; do
             if [ "$model" = "maml" ]; then
                 python $Trainers_Dir/train_within_domain_fsl.py --dataset $dataset --model $model --k $shot --T 5 --T_val 10 --T_test 10 \
-                --val_after 500 --eval_iters 500 --train_iters 10000 --runs 1
+                --val_after 500 --eval_iters 500 --train_iters 60000 --runs 1
             else
                 python $Trainers_Dir/train_within_domain_fsl.py --dataset $dataset --model $model --k $shot \
-                --val_after 500 --eval_iters 500 --train_iters 10000 --runs 1
+                --val_after 500 --eval_iters 500 --train_iters 60000 --runs 1
             fi
         done
     done
