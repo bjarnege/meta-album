@@ -3,5 +3,7 @@
 .DS_Store
 .DS_Store?
 ._*
-
+# Avoid sending too much data
 Code/Data/*
+*.pkl
+*.pyc
