@@ -1,0 +1,53 @@
+Description: This experiment is named 'Cross-domain few-shot learning'. It trains and test the algorithm with episodes which are small classification tasks.
+
+--------------- GPU settings ---------------
+PyTorch version: 2.2.0
+Cuda version: 11.8
+cuDNN version: 8700
+Number of available GPUs: 1
+Current GPU name: NVIDIA GeForce RTX 3080
+
+--------------- Model settings ---------------
+Model: finetuning
+Backbone: resnet18
+Random seed: 1337
+Loss function: CrossEntropy
+Optimizer: Adam
+Learning rate: 0.001
+Training iterations: 10000
+Evaluation iterations: 500
+Validation active: True
+Validation after: 500
+
+--------------- Data settings ---------------
+Train datasets: DOG,INS_2,PLT_NET,MED_LF,PNU,RSICB,APL,TEX_DTD,ACT_40,MD_5_BIS
+Validation datasets: AWA,INS,FNG,PLT_DOC,PRT,RSD,BTS,TEX_ALOT,ACT_410,MD_6
+Test datasets: BRD,PLK,FLW,PLT_VIL,BCT,RESISC,CRS,TEX,SPT,MD_MIX
+Image size: 128
+
+--------------- Train episodes settings ---------------
+N-way: 5
+k-shot: None
+Minimum shots: 1
+Maximum shots: 20
+Query size: 16
+Batch size (FT): 16
+
+--------------- Evaluation episodes settings ---------------
+N-way: 5
+Minimum ways: 2
+Maximum ways: 20
+k-shot: 10
+Minimum shots: 1
+Maximum shots: 20
+Query size: 16
+Batch size (TFS, FT): 4
+
+--------------- Model specific settings ---------------
+Meta batch size (PN, MN, MAML): 1
+Train inner steps (TFS, MAML): 100
+Validation inner steps (FT, MAML): None
+Test inner steps (FT, MAML): None
+Base learning rate (MAML): None
+Test optimizer (FT): adam
+Test learning rate (FT): 0.001

@@ -16,24 +16,12 @@
 
 Create env with python 3.8
 ```
-conda create -n meta-album python=3.8
+conda create -n meta-album python=3.8 -f environment.yml
 ```
 
 Activate env
 ```
 conda activate meta-album
-```
-
-<br><br>
-
-# Get ready for experiments
-
-```
-cd Code
-```
-install required packages
-```
-pip install -r requirements.txt
 ```
 
 <br><br>

@@ -1,0 +1,45 @@
+Description: This experiment is named 'Within-domain few-shot learning'. It trains and test the algorithm with episodes which are small classification tasks.
+
+--------------- GPU settings ---------------
+PyTorch version: 2.2.0
+Cuda version: 11.8
+cuDNN version: 8700
+Number of available GPUs: 1
+Current GPU name: NVIDIA GeForce RTX 3080
+
+--------------- Model settings ---------------
+Model: finetuning
+Backbone: resnet18
+Random seed: 1337
+Loss function: CrossEntropy
+Optimizer: Adam
+Learning rate: 0.001
+Training iterations: 10000
+Evaluation iterations: 500
+Validation active: True
+Validation after: 500
+
+--------------- Data settings ---------------
+Dataset: ACT_410
+Image size: 128
+
+--------------- Train episodes settings ---------------
+N-way: 5
+k-shot: 10
+Query size: 16
+Batch size (FT): 16
+
+--------------- Evaluation episodes settings ---------------
+N-way: 5
+k-shot: 10
+Query size: 16
+Batch size (TFS, FT): 4
+
+--------------- Model specific settings ---------------
+Meta batch size (PN, MN, MAML): 1
+Train inner steps (TFS, MAML): 100
+Validation inner steps (FT, MAML): None
+Test inner steps (FT, MAML): None
+Base learning rate (MAML): None
+Test optimizer (FT): adam
+Test learning rate (FT): 0.001

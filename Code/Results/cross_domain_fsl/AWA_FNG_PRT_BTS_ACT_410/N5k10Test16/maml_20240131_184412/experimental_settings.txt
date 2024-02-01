@@ -1,0 +1,53 @@
+Description: This experiment is named 'Cross-domain few-shot learning'. It trains and test the algorithm with episodes which are small classification tasks.
+
+--------------- GPU settings ---------------
+PyTorch version: 2.2.0
+Cuda version: 11.8
+cuDNN version: 8700
+Number of available GPUs: 1
+Current GPU name: NVIDIA GeForce RTX 3080
+
+--------------- Model settings ---------------
+Model: maml
+Backbone: resnet18
+Random seed: 1337
+Loss function: CrossEntropy
+Optimizer: Adam
+Learning rate: 0.001
+Training iterations: 10000
+Evaluation iterations: 500
+Validation active: True
+Validation after: 1000
+
+--------------- Data settings ---------------
+Train datasets: BRD,FLW,BCT,CRS,SPT
+Validation datasets: DOG,PLT_NET,PNU,APL,ACT_40
+Test datasets: AWA,FNG,PRT,BTS,ACT_410
+Image size: 128
+
+--------------- Train episodes settings ---------------
+N-way: 5
+k-shot: None
+Minimum shots: 1
+Maximum shots: 20
+Query size: 16
+Batch size (FT): None
+
+--------------- Evaluation episodes settings ---------------
+N-way: 5
+Minimum ways: 2
+Maximum ways: 20
+k-shot: 10
+Minimum shots: 1
+Maximum shots: 20
+Query size: 16
+Batch size (TFS, FT): None
+
+--------------- Model specific settings ---------------
+Meta batch size (PN, MN, MAML): 1
+Train inner steps (TFS, MAML): 5
+Validation inner steps (FT, MAML): 10
+Test inner steps (FT, MAML): 10
+Base learning rate (MAML): 0.01
+Test optimizer (FT): adam
+Test learning rate (FT): 0.001

@@ -10,17 +10,38 @@ echo $'########################################################'
 echo $'###--- Within-Domain Few-Shot Learning Experiments ---###'
 echo $'########################################################\n\n'
 
-Datasets=("BCT" "BRD" "CRS" "FLW" "MD_MIX" "PLK" "PLT_VIL" "RESISC" "SPT" "TEX")
-Models=("tfs" "finetuning" "maml" "protonet" "matchingnet")
-Shots=(1 5 10 20)
+Datasets=("ACT_410")
+Models=("finetuning")
+Shots=(10)
 
 for dataset in ${Datasets[@]}; do 
     for model in ${Models[@]}; do
         for shot in ${Shots[@]}; do
             if [ "$model" = "maml" ]; then
-                python $Trainers_Dir/train_within_domain_fsl.py --dataset $dataset --model $model --k $shot --T 5 --T_val 10 --T_test 10
+                python $Trainers_Dir/train_within_domain_fsl.py --dataset $dataset --model $model --k $shot --T 5 --T_val 10 --T_test 10 \
+                --val_after 500 --eval_iters 500 --train_iters 10000 --runs 1
             else
-                python $Trainers_Dir/train_within_domain_fsl.py --dataset $dataset --model $model --k $shot
+                python $Trainers_Dir/train_within_domain_fsl.py --dataset $dataset --model $model --k $shot \
+                --val_after 500 --eval_iters 500 --train_iters 10000 --runs 1
+            fi
+        done
+    done
+done
+
+
+Datasets=("BTS")
+Models=("maml")
+Shots=(10)
+
+for dataset in ${Datasets[@]}; do 
+    for model in ${Models[@]}; do
+        for shot in ${Shots[@]}; do
+            if [ "$model" = "maml" ]; then
+                python $Trainers_Dir/train_within_domain_fsl.py --dataset $dataset --model $model --k $shot --T 5 --T_val 10 --T_test 10 \
+                --val_after 500 --eval_iters 500 --train_iters 10000 --runs 1
+            else
+                python $Trainers_Dir/train_within_domain_fsl.py --dataset $dataset --model $model --k $shot \
+                --val_after 500 --eval_iters 500 --train_iters 10000 --runs 1
             fi
         done
     done
